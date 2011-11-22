@@ -28,11 +28,9 @@ module Refinery
       RUBY
       Object.const_set(plugin.class_name.to_sym, klass)
       
+      # JN: This is breaking things as it is already added somewhere.
       # add the new plugin to the collection of registered plugins
-      puts "REGISTERING "+ plugin.name
-      puts "Before: "+::Refinery::Plugins.registered.names.join(", ")
-      ::Refinery::Plugins.registered << plugin
-      puts "After: "+::Refinery::Plugins.registered.names.join(", ")
+      #::Refinery::Plugins.registered << plugin
     end
 
     # Returns the class name of the plugin
