@@ -31,6 +31,7 @@ module Refinery
       # add the new plugin to the collection of registered plugins
       puts "REGISTERING "+ plugin.name
       ::Refinery::Plugins.registered << plugin
+      puts ::Refinery::Plugins.registered.names
     end
 
     # Returns the class name of the plugin
