@@ -29,6 +29,7 @@ module Refinery
       Object.const_set(plugin.class_name.to_sym, klass)
       
       # add the new plugin to the collection of registered plugins
+      puts "REGISTERING "+ plugin.name
       ::Refinery::Plugins.registered << plugin
     end
 
