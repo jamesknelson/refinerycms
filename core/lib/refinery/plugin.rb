@@ -30,8 +30,9 @@ module Refinery
       
       # add the new plugin to the collection of registered plugins
       puts "REGISTERING "+ plugin.name
+      puts "Before: "+::Refinery::Plugins.registered.names.join(", ")
       ::Refinery::Plugins.registered << plugin
-      puts ::Refinery::Plugins.registered.names
+      puts "After: "+::Refinery::Plugins.registered.names.join(", ")
     end
 
     # Returns the class name of the plugin
