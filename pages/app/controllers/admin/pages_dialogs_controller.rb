@@ -4,15 +4,10 @@ module Admin
   class PagesDialogsController < Admin::DialogsController
 
     def link_to
-      @pages = Page.paginate :page => params[:page],
-                             :conditions => {:parent_id => nil},
-                             :order => 'position ASC',
-                             :per_page => Page.per_page(dialog=true)
+      @pages = Page.where(:parent_id => nil).order('position ASC').page(params[:page])
 
       if ::Refinery::Plugins.registered.names.include?('refinery_files')
-        @resources = Resource.paginate :page => params[:resource_page],
-                                       :order => 'created_at DESC',
-                                       :per_page => Resource.per_page(dialog=true)
+        @resources = Resource.order('created_at DESC').page(params[:resource_page])
 
         # resource link
         if params[:current_link].present?

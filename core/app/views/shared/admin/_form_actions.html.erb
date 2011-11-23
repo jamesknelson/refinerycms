@@ -36,10 +36,10 @@
   end
 
   paginate_collection = nil
-  if (paginate ||= {}).length > 0 && paginate.keys.include?(:collection)
-    paginate_collection = paginate.delete(:collection)
+  if (paginator ||= {}).length > 0 && paginator.keys.include?(:collection)
+    paginate_collection = paginator.delete(:collection)
   end
-  paginate.delete(:url)
+  paginator.delete(:url)
 -%>
 <% if from_dialog? %>
 <input type='hidden' name='modal' value='true' />
@@ -70,6 +70,6 @@
                 :confirm => delete_confirmation,
                 :class => "button confirm-delete") unless hide_delete %>
 
-    <%= will_paginate paginate_collection, paginate unless paginate_collection.nil? %>
+    <%= paginate paginate_collection, paginator unless paginate_collection.nil? %>
   </div>
 </div>
